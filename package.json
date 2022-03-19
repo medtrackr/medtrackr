@@ -8,10 +8,9 @@
   },
   "scripts": {
     "test": "test",
-    "dev": "webpack serve & node server/server.js",
+    "dev": "webpack serve & nodemon server/server.js",
     "build": "webpack"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/medtrackr/medtrackr.git"
@@ -24,6 +23,7 @@
   "homepage": "https://github.com/medtrackr/medtrackr#readme",
   "dependencies": {
     "express": "^4.17.3",
+    "pg": "^8.7.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",

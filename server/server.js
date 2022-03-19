@@ -1,5 +1,8 @@
 const express = require('express');
 const path = require('path');
+const db = require('./models/models');
+const router = require('./routers/routers')
+
 
 const app = express();
 
@@ -19,14 +22,24 @@ app.get('/', (req, res) => {
 //setup all routes *******************************
 
 
-
-app.get('/db/scooby', (req, res) => {
-  console.log('we here?')
-  res.status(201).json({yes: 'we did it!'})
-})
+app.use('/db', router)
 
 
+// app.get('/db/scooby', (req, res) => {
+//   console.log('we here?')
+//   res.status(201).json({yes: 'we did it!'})
+// })
 
+
+// app.get('/db/', (req, res) => {
+//   db.query(`SELECT * FROM users`, (err, response) => {
+//     if (err){
+//       console.log(err)
+//     }else {
+//       res.status(201).json(response)
+//     }
+//   })
+// })
 
 
 //setup all routes *******************************
@@ -49,3 +62,4 @@ app.use((err, req, res, next) => {
 
 //have server listen on PORT
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
+
