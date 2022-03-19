@@ -1,0 +1,23 @@
+.container {
+    border: 2px solid rgb(0, 0, 0);
+    margin: 5px;
+}
+
+.ScheduleBox {
+    border: 2px solid rgb(180, 20, 20);
+    margin: 5px;
+}
+
+.dayBox {
+    border: 2px solid rgb(0, 17, 255);
+    margin: 5px;
+}
+
+.timeOfDayBox {
+    border: 2px solid rgb(25, 170, 37);
+    margin: 5px;
+}
+
+#week {
+
+}

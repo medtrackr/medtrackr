@@ -8,7 +8,7 @@ const initialState = {
   userMedicines: [{medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}}]
 };
 
-const marketsReducer = (state = initialState, action) => {
+const medsReducer = (state = initialState, action) => {
   let marketList;
   let totalCards;
   console.log(state)
@@ -44,4 +44,4 @@ const marketsReducer = (state = initialState, action) => {
   }
 };
 
-export default marketsReducer;
+export default medsReducer;
