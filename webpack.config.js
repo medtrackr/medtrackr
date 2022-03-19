@@ -5,12 +5,12 @@ module.exports = {
   mode: 'development',
   entry: path.join(__dirname, "index.js"),
   output: {
-    path:path.resolve(__dirname, "dist"),
+    path:path.resolve(__dirname, "/dist"),
   },
   module: {
     rules: [
       {
-        test: /\.?js$/,
+        test: /\.js|\.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
