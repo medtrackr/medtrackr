@@ -8,7 +8,7 @@ import Day from './Day.jsx';
 //   email: 'treylewis@gmail.com',
 //   userMedicines: [{medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}}]
 // };
-const userMedicines = [{medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}}]
+
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 let days=[]
@@ -19,17 +19,20 @@ const dayMaker = (userMedicines, day) => (
   />
 );
 
-for (let i = 0; i < daysOfWeek.length; i++) {
-    days.push(dayMaker(userMedicines, daysOfWeek[i]))
-}
-
 const Schedule = ({
   userMedicines,
-}) => (
-  <div className="ScheduleBox">
-    <h2 id="week">This Week</h2>
-    {days}
-  </div>
-)
+  }) => {
+  for (let i = 0; i < daysOfWeek.length; i++) {
+    days.push(dayMaker(userMedicines, daysOfWeek[i]))
+  }
+  return (
+    <div className="schedule-box">
+      <h2>This Week</h2>
+      <div className="week-box">
+        {days}
+      </div>
+    </div>
+  )
+}
 
 export default Schedule;

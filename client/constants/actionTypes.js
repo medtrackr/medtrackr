@@ -1,3 +1,2 @@
-export const ADD_MARKET = "ADD_MARKET";
-// export const DELETE_MARKET = "DELETE_MARKET";
-// export const UPDATE_MARKET = "UPDATE_MARKET";
+export const ADD_MEDICINE = "ADD_MEDICINE";
+// export const SET_NEW_MEDICINE = "SET_NEW_MEDICINE";

@@ -1,23 +1,85 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: rgb(32, 32, 32);
+}
 .container {
     border: 2px solid rgb(0, 0, 0);
     margin: 5px;
 }
 
-.ScheduleBox {
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile {
+    padding-right: 0.5em;
+    margin-right: 5px;
+}
+
+.navbar-buttons {
+    background-color: #eff9fb;
+    border-radius: 0.2em;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0px;
+    margin: 5px;
+}
+
+.navbar-buttons a {
+    border-radius: 0.2em;
+    color: rgb(32, 32, 32);
+    background-color: rgb(180, 208, 240);
+    text-decoration: none;
+    padding: 0.5em;
+    margin: 5px;
+}
+
+.navbar-buttons a:hover, a:active {
+    background-color: rgb(109, 172, 243);
+  }
+
+.schedule-box {
     border: 2px solid rgb(180, 20, 20);
     margin: 5px;
 }
 
-.dayBox {
-    border: 2px solid rgb(0, 17, 255);
-    margin: 5px;
+.schedule-box h2 {
+    text-align: center;
 }
 
-.timeOfDayBox {
-    border: 2px solid rgb(25, 170, 37);
-    margin: 5px;
+.week-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-#week {
+.day-box {
+    border-radius: 0.5em;
+    background-color: #eff9fb;
+    box-shadow: 2px 2px 2px rgb(194, 194, 194);
+    margin: 5px;
+    flex: 1;
+}
 
+.day-box h3 {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.time-of-day-box {
+    border-radius: 0.5em;
+    background-color: rgb(236, 236, 236);
+    box-shadow: 1px 1px 1px rgb(194, 194, 194);
+    margin: 5px;
+    padding: 5px;
+}
+
+.time-of-day-box h4 {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0px 0px 5px 0px;
+    border-bottom: 2px solid;
 }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Schedule from '../components/Schedule.jsx';
-import Navbar from '../components/Navbar.jsx';
-import AddMedicineContainer from '../containers/AddMedicineContainer.jsx';
 import * as actions from '../actions/actions';
+// import AddMedicineForm from '../components/AddMedicineForm.jsx';
+// import Schedule from '../components/Schedule.jsx';
+// import Navbar from '../components/Navbar.jsx';
 // import from child components...
 // import TotalsDisplay from '../components/TotalsDisplay.jsx';
 // import MarketsContainer from './MarketsContainer.jsx';
@@ -24,19 +24,14 @@ const mapStateToProps = state => ({
   addMedicineStatus: state.meds.addMedicineStatus,
 });
 
-const mapDispatchToProps = dispatch => ({
-  // create functions that will dispatch action creators
-  addMedicine: () => {
-    dispatch(actions.addMedicineActionCreator());
-  },
-});
+// const mapDispatchToProps = dispatch => ({
+//   // create functions that will dispatch action creators
+//   setNewMedicine: (newValue) => {
+//     dispatch(actions.setNewMedicineActionCreator(newValue));
+//   },
+// });
 
-const conditionalRender = (cond, props) => {
-  if (cond === true) return (<AddMedicineContainer />);
-  return (<Schedule userMedicines = {props.userMedicines} />)
-}
-
-class HomeContainer extends Component {
+class AddMedicineContainer extends Component {
   constructor(props) {
     super(props);
   }
@@ -45,9 +40,8 @@ class HomeContainer extends Component {
     return(
       <div className="container">
         <div className="outerBox">
-          <h1 id="header">Home Container</h1>
-          <Navbar firstName = {this.props.firstName} addMedicine = {this.props.addMedicine} />
-          {conditionalRender(this.props.addMedicineStatus, this.props)}
+          <h2 id="add-medicine">Add Medicine</h2>
+          {/* <AddMedicineForm setNewMedicine = {this.props.setNewMedicine}/> */}
         </div>
       </div>
     );
@@ -55,4 +49,4 @@ class HomeContainer extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps, null)(AddMedicineContainer);

@@ -1,17 +1,13 @@
 import React from 'react';
 
-const userMedicines = [{medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}}]
-
-
-
 const TimeOfDay = ({
   userMedicines,
   timeOfDay,
   medicines
 }) => (
-  <div className="timeOfDayBox">
+  <div className="time-of-day-box">
     <h4>{timeOfDay}</h4>
-    <div>{medicines}</div>
+    {medicines.map(medicine => <li>{medicine}</li>)}
   </div>
 );
 
