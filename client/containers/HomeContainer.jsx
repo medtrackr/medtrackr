@@ -29,6 +29,10 @@ const mapDispatchToProps = dispatch => ({
   addMedicine: () => {
     dispatch(actions.addMedicineActionCreator());
   },
+
+  showSchedule: () => {
+    dispatch(actions.showScheduleActionCreator());
+  },
 });
 
 const conditionalRender = (cond, props) => {
@@ -46,7 +50,7 @@ class HomeContainer extends Component {
       <div className="container">
         <div className="outerBox">
           <h1 id="header">Home Container</h1>
-          <Navbar firstName = {this.props.firstName} addMedicine = {this.props.addMedicine} />
+          <Navbar firstName = {this.props.firstName} addMedicine = {this.props.addMedicine} showSchedule = {this.props.showSchedule} />
           {conditionalRender(this.props.addMedicineStatus, this.props)}
         </div>
       </div>

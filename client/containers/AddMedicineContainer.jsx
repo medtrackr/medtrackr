@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-// import AddMedicineForm from '../components/AddMedicineForm.jsx';
+import AddMedicineForm from '../components/AddMedicineForm.jsx';
 // import Schedule from '../components/Schedule.jsx';
 // import Navbar from '../components/Navbar.jsx';
 // import from child components...
@@ -22,14 +22,18 @@ const mapStateToProps = state => ({
   email: state.meds.email,
   userMedicines: state.meds.userMedicines,
   addMedicineStatus: state.meds.addMedicineStatus,
+  newMedicine: state.meds.newMedicine,
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   // create functions that will dispatch action creators
-//   setNewMedicine: (newValue) => {
-//     dispatch(actions.setNewMedicineActionCreator(newValue));
-//   },
-// });
+const mapDispatchToProps = dispatch => ({
+  // create functions that will dispatch action creators
+  setNewMedicine: (newValue) => {
+    dispatch(actions.setNewMedicineActionCreator(newValue));
+  },
+  addNewMedicine: () => {
+    dispatch(actions.addNewMedicineActionCreator());
+  },
+});
 
 class AddMedicineContainer extends Component {
   constructor(props) {
@@ -41,7 +45,7 @@ class AddMedicineContainer extends Component {
       <div className="container">
         <div className="outerBox">
           <h2 id="add-medicine">Add Medicine</h2>
-          {/* <AddMedicineForm setNewMedicine = {this.props.setNewMedicine}/> */}
+          <AddMedicineForm setNewMedicine = {this.props.setNewMedicine} newMedicine = {this.props.newMedicine} addNewMedicine = {this.props.addNewMedicine} />
         </div>
       </div>
     );
@@ -49,4 +53,4 @@ class AddMedicineContainer extends Component {
 
 }
 
-export default connect(mapStateToProps, null)(AddMedicineContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AddMedicineContainer);

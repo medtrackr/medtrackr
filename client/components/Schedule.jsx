@@ -11,7 +11,6 @@ import Day from './Day.jsx';
 
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-let days=[]
 const dayMaker = (userMedicines, day) => (
   <Day
     day={day}
@@ -22,6 +21,7 @@ const dayMaker = (userMedicines, day) => (
 const Schedule = ({
   userMedicines,
   }) => {
+  let days=[];
   for (let i = 0; i < daysOfWeek.length; i++) {
     days.push(dayMaker(userMedicines, daysOfWeek[i]))
   }

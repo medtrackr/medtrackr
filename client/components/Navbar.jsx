@@ -2,12 +2,13 @@ import React from 'react';
 
 const Navbar = ({
   addMedicine,
+  showSchedule,
   firstName
 }) => (
   <div className="navbar">
     <div className="navbar-buttons">
       <a href="/home">Home</a>
-      <a href="/home">My Schedule</a>
+      <a onClick={() => { showSchedule() }}>My Schedule</a>
       <a onClick={() => { addMedicine() }}>Add Medications</a>
     </div>
     <div className="profile">
