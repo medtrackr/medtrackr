@@ -15,12 +15,26 @@ const initialState = {
   lunch: false,
   dinner: false,
   beforeBed: false,
+  loginSuccess: false,
 };
 
+
+
 const medsReducer = (state = initialState, action) => {
-  console.log(state);
+  // console.log(state);
   let medicineList;
   switch (action.type) {
+    case types.LOGIN:
+      console.log(action.payload)
+      return {
+        ...state,
+        userId: action.payload.userId,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
+        email: action.payload.email,
+        userMedicines: action.payload.userMedicines,
+        loginSuccess: true,
+      };
     case types.ADD_MEDICINE:
 
       return {

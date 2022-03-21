@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import axios from 'axios'
 
 // Render the AddMedicineContainer when the "Add Medications" button is pressed
 export const addMedicineActionCreator = () => ({
@@ -31,9 +32,28 @@ export const updateScheduleCheckboxActionCreator = checkbox => ({
 });
 
 
-export const loginActionCreator = (email, password) => {
-  console.log(email, password)
-  return {type: types.LOGIN}
+export const loginActionCreator = (email, password) => (dispatch) => {
+  // console.log(email, password)
+  // const response = await fetch(`/db/login/${email}/${password}`)
+  // const data = await response.json()
+  // console.log(data)
+
+  // return {
+  //   type: types.LOGIN,
+  //   payload: data
+  // }
+
+  
+  axios.get(`/db/login/${email}/${password}`)
+  .then(({data}) => {
+    // console.log(data)
+    dispatch({
+      type: types.LOGIN,
+      payload: data
+    })
+  })
+  .catch(err => console.log(err))
+
 };
 
 export const registerActionCreator = (firstName, lastName, email, password) => {

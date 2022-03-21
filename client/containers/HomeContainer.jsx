@@ -22,6 +22,7 @@ const mapStateToProps = state => ({
   email: state.meds.email,
   userMedicines: state.meds.userMedicines,
   addMedicineStatus: state.meds.addMedicineStatus,
+  userId: state.meds.userId,
 });
 
 const mapDispatchToProps = dispatch => ({
