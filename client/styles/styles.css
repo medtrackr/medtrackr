@@ -1,0 +1,231 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #FAFAFA;
+    color: rgb(32, 32, 32);
+}
+.container {
+    border-radius: 1em;
+    margin: 5px;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    color:#005C70;
+    margin-left: 1%;
+}
+
+.outerBox {
+    padding: 1px;
+}
+
+.add-medicine-box {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    background-color: #E0F0F1;
+    border-radius: 1em;
+    padding: 5px;
+}
+
+.headerBox {
+    display: flex;
+    margin: 10px;
+    border-radius: 1em;
+    background-color: #E0F0F1;
+    padding: 5px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-right: 5px;
+}
+
+.navbar-buttons {
+    border-radius: 0.2em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 4px;
+    margin: 5px;
+}
+
+.navbar-single-button {
+    border-radius: 0.2em;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-buttons a {
+    border-radius: 0.8em;
+    display: flex;
+    color: #005C70;
+    fill: #005C70;
+    text-decoration: none;
+    padding: 0.5em;
+    height: 90%;
+}
+
+.navbar-buttons a:hover, a:active {
+    background-color: #5CA2A8;
+    color: #FFFFFF;
+    fill: #FFFFFF;
+    cursor: pointer;
+}
+
+.menu-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    margin-right: 3px;
+}
+
+.menu-text {
+    display: flex;
+    align-items: center;
+}
+
+.menu-text h3 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.schedule-box {
+    border-radius: 1em;
+    margin-top: 10px;
+}
+
+.medicine-box {
+    /* display: flex;
+    justify-content: center; */
+    display: grid;
+    justify-content: center;
+    grid-template-columns:  repeat(auto-fit, 24rem);
+    grid-auto-flow: row;
+}
+
+.schedule-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.schedule-box h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #005C70;
+    min-width: 300px;
+    border-bottom: 2px solid #005C70;
+    margin: 0px;
+}
+
+.week-box {
+    border-radius: 1em;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; */
+    display: grid;
+    justify-content: center;
+    grid-template-columns:  repeat(auto-fit, minmax(9rem, calc(100%/7)));
+    grid-auto-flow: row;
+    margin: 10px;
+}
+
+.day-box {
+    border-radius: 0.5em;
+    color: #FFFFFF;
+    background-color: #E0F0F1;
+    /* box-shadow: 2px 2px 2px rgb(194, 194, 194); */
+    margin: 5px;
+    flex: 1;
+}
+
+.day-box h3 {
+    text-align: center;
+    color: #005C70;
+    font-size: 1.3em;
+}
+
+.time-of-day-box {
+    border-radius: 0.5em;
+    background-color: #E0F0F1;
+    color: #005C70;
+    /* box-shadow: 1px 1px 1px rgb(194, 194, 194); */
+    margin: 5px;
+    padding: 5px;
+}
+
+.time-of-day-box h4 {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0px 0px 5px 0px;
+    border-bottom: 2px solid;
+}
+
+
+.add-medicine-form {
+
+}
+
+.add-medicine-form-data {
+    display: flex;
+    flex: row;
+    justify-content: center;
+    color: #005C70;
+}
+
+.add-medicine-form-data div {
+    margin: 5px;
+}
+
+.add-medicine-button {
+    display: flex;
+    flex: row;
+    justify-content: center;
+}
+
+.add-medicine-button button {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 0.8em;
+    background-color:#E0F0F1;
+    color:#005C70;
+    border: 2px solid #005C70;
+}
+
+.add-medicine-button button:hover {
+    cursor: pointer;
+    background-color:#5CA2A8;
+    color:#FFFFFF;
+    border: 2px solid #5CA2A8;
+}
+
+.remove-medicine-button button {
+    padding: 5px;
+}
+
+.medicine-list-item {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.svg {
+    background-size: 20px 30px;
+}

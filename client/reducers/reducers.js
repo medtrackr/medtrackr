@@ -5,37 +5,77 @@ const initialState = {
   firstName: 'Trey',
   lastName: 'Lewis',
   email: 'treylewis@gmail.com',
-  userMedicines: [{medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}}]
+  lastMedicineId: 2,
+  userMedicines: [
+    {medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}},
+    {medicineId: 2, medicineName: 'Deoxys', medicineSchedule: {breakfast: true, lunch: true, dinner: true, beforeBed: false}}],
+  addMedicineStatus: false,
+  newMedicine: '',
+  breakfast: false,
+  lunch: false,
+  dinner: false,
+  beforeBed: false,
 };
 
-const marketsReducer = (state = initialState, action) => {
-  let marketList;
-  let totalCards;
-  console.log(state)
+const medsReducer = (state = initialState, action) => {
+  console.log(state);
+  let medicineList;
   switch (action.type) {
-    case types.ADD_MARKET:
-    //   // increment lastMarketId and totalMarkets counters
-    //   const marketId = ++state.lastMarketId;
-    //   const totalMarkets = ++state.totalMarkets;
-    //   // create the new market object from provided data
-    //   const newMarket = {
-    //     // what goes in here?
-    //     marketId,
-    //     location: state.newLocation,
-    //     cards: 0,
-    //   };
+    case types.ADD_MEDICINE:
 
-    //   // push the new market onto a copy of the market list
-    //   marketList = state.marketList.slice();
-    //   marketList.push(newMarket);
-
-    //   // return updated state
       return {
         ...state,
-        // marketList,
-        // totalMarkets,
-        // lastMarketId: marketId,
-        // newLocation: '',
+        addMedicineStatus: true,
+      };
+      
+    case types.SHOW_SCHEDULE:
+
+      return {
+        ...state,
+        addMedicineStatus: false,
+      };
+
+    case types.SET_NEW_MEDICINE:
+      return {
+        ...state,
+        newMedicine: action.payload,
+      };
+
+    case types.UPDATE_SCHEDULE_CHECKBOX:
+      const time = Object.keys(action.payload)[0];
+      return {
+        ...state,
+        [time]: action.payload[time],
+      };
+
+    case types.ADD_NEW_MEDICINE:
+      const medicineId = ++state.lastMedicineId;
+      const newMedicine = {
+        medicineId,
+        medicineName: state.newMedicine,
+        medicineSchedule: {breakfast: state.breakfast, lunch: state.lunch, dinner: state.dinner, beforeBed: state.beforeBed},
+      }
+
+      medicineList = state.userMedicines.slice();
+      medicineList.push(newMedicine);
+
+      return {
+        ...state,
+        lastMedicineId: medicineId,
+        userMedicines: medicineList,
+        newMedicine: '',
+      };
+
+    case types.REMOVE_MEDICINE:
+      console.log(action.payload)
+      const id = action.payload;
+      const newMedicineList = [];
+      for (let i = 0; i < state.userMedicines.length; i++) {
+        if (state.userMedicines[i].medicineId !== id) newMedicineList.push(state.userMedicines[i]);
+      }
+      return {
+        ...state,
+        userMedicines: newMedicineList,
       };
 
     default: {
@@ -44,4 +84,4 @@ const marketsReducer = (state = initialState, action) => {
   }
 };
 
-export default marketsReducer;
+export default medsReducer;
