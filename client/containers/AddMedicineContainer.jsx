@@ -23,6 +23,10 @@ const mapStateToProps = state => ({
   userMedicines: state.meds.userMedicines,
   addMedicineStatus: state.meds.addMedicineStatus,
   newMedicine: state.meds.newMedicine,
+  breakfast: state.meds.breakfast,
+  lunch: state.meds.lunch,
+  dinner: state.meds.dinner,
+  beforeBed: state.meds.beforeBed,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -33,6 +37,9 @@ const mapDispatchToProps = dispatch => ({
   addNewMedicine: () => {
     dispatch(actions.addNewMedicineActionCreator());
   },
+  updateScheduleCheckbox: (checkbox) => {
+    dispatch(actions.updateScheduleCheckboxActionCreator(checkbox));
+  },
 });
 
 class AddMedicineContainer extends Component {
@@ -42,10 +49,19 @@ class AddMedicineContainer extends Component {
 
   render() {
     return(
-      <div className="container">
-        <div className="outerBox">
-          <h2 id="add-medicine">Add Medicine</h2>
-          <AddMedicineForm setNewMedicine = {this.props.setNewMedicine} newMedicine = {this.props.newMedicine} addNewMedicine = {this.props.addNewMedicine} />
+      <div className="schedule-box">
+        <h2 id="add-medicine">Add Medicine</h2>
+        <div className="add-medicine-box">
+          <AddMedicineForm 
+            setNewMedicine = {this.props.setNewMedicine} 
+            newMedicine = {this.props.newMedicine} 
+            addNewMedicine = {this.props.addNewMedicine}
+            breakfast = {this.props.breakfast}
+            lunch = {this.props.lunch}
+            dinner = {this.props.dinner}
+            beforeBed = {this.props.beforeBed}
+            updateScheduleCheckbox = {this.props.updateScheduleCheckbox}
+          />
         </div>
       </div>
     );

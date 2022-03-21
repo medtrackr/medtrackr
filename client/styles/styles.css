@@ -1,78 +1,150 @@
 body {
     font-family: 'Source Sans Pro', sans-serif;
+    background-color: #FAFAFA;
     color: rgb(32, 32, 32);
 }
 .container {
-    border: 2px solid rgb(0, 0, 0);
+    border-radius: 1em;
     margin: 5px;
+}
+
+#header {
+    color:#005C70;
+    margin-left: 1%;
+}
+
+.outerBox {
+    padding: 1px;
+}
+
+.add-medicine-box {
+    margin: 10px;
+}
+
+.add-medicine-form {
+    background-color: #5CA2A8;
+    border-radius: 1em;
+}
+
+.headerBox {
+    display: flex;
+    margin: 5px;
+    border-radius: 1em;
+    background-color: #E0F0F1;
+    padding: 5px;
 }
 
 .navbar {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
+    width: 100%;
 }
 
 .profile {
-    padding-right: 0.5em;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
     margin-right: 5px;
 }
 
 .navbar-buttons {
-    background-color: #eff9fb;
     border-radius: 0.2em;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     list-style: none;
-    padding: 0px;
+    padding: 4px;
     margin: 5px;
+}
+
+.navbar-single-button {
+    border-radius: 0.2em;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-buttons a {
-    border-radius: 0.2em;
-    color: rgb(32, 32, 32);
-    background-color: rgb(180, 208, 240);
+    border-radius: 0.8em;
+    display: flex;
+    color: #005C70;
+    fill: #005C70;
     text-decoration: none;
     padding: 0.5em;
-    margin: 5px;
+    height: 90%;
 }
 
 .navbar-buttons a:hover, a:active {
-    background-color: rgb(109, 172, 243);
-  }
+    background-color: #5CA2A8;
+    color: #FFFFFF;
+    fill: #FFFFFF;
+    cursor: pointer;
+}
+
+.menu-icons {
+    display: flex;
+    align-items: center;
+}
+
+.menu-text {
+    display: flex;
+    align-items: center;
+}
+
+.menu-text h3 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
 
 .schedule-box {
-    border: 2px solid rgb(180, 20, 20);
+    border-radius: 1em;
+    background-color: #E0F0F1;
     margin: 5px;
+    margin-top: 10px;
+    padding: 1px;
 }
 
 .schedule-box h2 {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #005C70;
+    padding-top: 10px;
+    margin: 0px;
 }
 
 .week-box {
+    border-radius: 1em;
+    background-color: #5CA2A8;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px;
 }
 
 .day-box {
     border-radius: 0.5em;
-    background-color: #eff9fb;
-    box-shadow: 2px 2px 2px rgb(194, 194, 194);
+    color: #FFFFFF;
+    background-color: #5CA2A8;
+    /* box-shadow: 2px 2px 2px rgb(194, 194, 194); */
     margin: 5px;
     flex: 1;
 }
 
 .day-box h3 {
     text-align: center;
+    color: #FFFFFF;
     font-size: 1.3em;
 }
 
 .time-of-day-box {
     border-radius: 0.5em;
-    background-color: rgb(236, 236, 236);
-    box-shadow: 1px 1px 1px rgb(194, 194, 194);
+    background-color: #5CA2A8;
+    color: #FFFFFF;
+    /* box-shadow: 1px 1px 1px rgb(194, 194, 194); */
     margin: 5px;
     padding: 5px;
 }
@@ -82,4 +154,46 @@ body {
     font-size: 1.2em;
     margin: 0px 0px 5px 0px;
     border-bottom: 2px solid;
+}
+
+.add-medicine-form-data {
+    display: flex;
+    flex: row;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.add-medicine-form-data div {
+    margin: 5px;
+}
+
+.add-medicine-button {
+    display: flex;
+    flex: row;
+    justify-content: center;
+}
+
+.add-medicine-button button {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 0.8em;
+    background-color:#E0F0F1;
+    color:#005C70;
+    border: 0px;
+}
+
+.add-medicine-button button:hover {
+    cursor: pointer;
+
+}
+
+#add-medicine {
+    display: flex;
+    flex: row;
+    justify-content: center;
+}
+
+.svg {
+    background-size: 20px 30px;
 }

@@ -19,7 +19,9 @@ export const setNewMedicineActionCreator = newMedicine => ({
 export const addNewMedicineActionCreator = () => ({
   type: types.ADD_NEW_MEDICINE,
 });
-// export const deleteMarketActionCreator = marketId => ({
-//   type: types.DELETE_MARKET,
-//   payload: marketId,
-// });:
+
+export const updateScheduleCheckboxActionCreator = checkbox => ({
+  type: types.UPDATE_SCHEDULE_CHECKBOX ,
+  payload: checkbox,
+});
+

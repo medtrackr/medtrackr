@@ -49,9 +49,12 @@ class HomeContainer extends Component {
     return(
       <div className="container">
         <div className="outerBox">
-          <h1 id="header">Home Container</h1>
-          <Navbar firstName = {this.props.firstName} addMedicine = {this.props.addMedicine} showSchedule = {this.props.showSchedule} />
-          {conditionalRender(this.props.addMedicineStatus, this.props)}
+          <div className="headerBox">
+            <h1 id="header">Medtrackr</h1>
+            <Navbar firstName = {this.props.firstName} addMedicine = {this.props.addMedicine} showSchedule = {this.props.showSchedule} />
+          </div>
+            {conditionalRender(this.props.addMedicineStatus, this.props)}
+
         </div>
       </div>
     );

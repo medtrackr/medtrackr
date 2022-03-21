@@ -11,11 +11,15 @@ const initialState = {
     {medicineId: 2, medicineName: 'Deoxys', medicineSchedule: {breakfast: true, lunch: true, dinner: true, beforeBed: false}}],
   addMedicineStatus: false,
   newMedicine: '',
+  breakfast: false,
+  lunch: false,
+  dinner: false,
+  beforeBed: false,
 };
 
 const medsReducer = (state = initialState, action) => {
-  let medicineList
-  console.log(state)
+  console.log(state);
+  let medicineList;
   switch (action.type) {
     case types.ADD_MEDICINE:
 
@@ -37,12 +41,19 @@ const medsReducer = (state = initialState, action) => {
         newMedicine: action.payload,
       };
 
+    case types.UPDATE_SCHEDULE_CHECKBOX:
+      const time = Object.keys(action.payload)[0];
+      return {
+        ...state,
+        [time]: action.payload[time],
+      };
+
     case types.ADD_NEW_MEDICINE:
       const medicineId = ++state.lastMedicineId;
       const newMedicine = {
         medicineId,
         medicineName: state.newMedicine,
-        medicineSchedule: {breakfast: false, lunch: true, dinner: true, beforeBed: false}, // PLACEHOLDER SCHEDULE UNTIL WE GET CHECKBOXES WORKING
+        medicineSchedule: {breakfast: state.breakfast, lunch: state.lunch, dinner: state.dinner, beforeBed: state.beforeBed},
       }
 
       medicineList = state.userMedicines.slice();
@@ -54,7 +65,6 @@ const medsReducer = (state = initialState, action) => {
         userMedicines: medicineList,
         newMedicine: '',
       };
-    
 
     default: {
       return state;
