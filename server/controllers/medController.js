@@ -1,10 +1,11 @@
 const express = require('express');
+const models = require('../models/models');
 const model = require('../models/models');
 
 const medController = {};
 
 medController.getUserSchedule =  (req, res, next) => {
-    const queryText = `SELECT users.*, medicine.*, users_medicine.*
+    const queryText = `SELECT users.*, medicine.*, users_medicine.*, users._id AS users_id
     FROM users
     LEFT OUTER JOIN users_medicine ON users_medicine.user_id = users._id
     LEFT OUTER JOIN medicine ON users_medicine.medicine_id = medicine._id
@@ -53,7 +54,7 @@ medController.sortInfo = (req, res, next) => {
   const userInfo = res.locals.userInfo;
 
   const userSchedule = {
-    userId: userInfo[0]._id,
+    userId: userInfo[0].users_id,
     firstName: userInfo[0].first_name,
     lastName: userInfo[0].last_name,
     email: userInfo[0].email,
@@ -71,14 +72,14 @@ medController.sortInfo = (req, res, next) => {
 
     const medSchedule = {
       medicineId: userInfo[i].medicine_id,
-      medicineName: userInfo[i].medicine_id,
+      medicineName: userInfo[i].name,
     }
 
     const key = {
       breakfast: 2,
       lunch: 3,
       dinner: 5, 
-      beforebed: 7
+      beforeBed: 7
     }
 
     const schedule = userInfo[i].schedule
@@ -89,9 +90,11 @@ medController.sortInfo = (req, res, next) => {
       }
     }
 
-    medSchedule.medicineSchedule = obj
+    if (userInfo[i].schedule !== null) {
+      medSchedule.medicineSchedule = obj
 
-    userMedicines.push(medSchedule)
+      userMedicines.push(medSchedule)
+  }
 
   }
 
@@ -100,6 +103,155 @@ medController.sortInfo = (req, res, next) => {
   res.locals.userSchedule = userSchedule;
   next();
 
+}
+
+medController.createUser = (req, res, next) => {
+  const valuesObj = {
+    url: `INSERT INTO users (first_name, last_name, email, password)
+    VALUES ($1, $2, $3, $4)`,
+    params: [req.body.firstName, req.body.lastName, req.body.email, req.body.password]
+  }
+  model.query(valuesObj.url, valuesObj.params)
+  .then(data => {
+    res.locals.user = data.rows
+    next()
+  })
+  .catch(err => {
+    res.locals.user = 'Email already exists or missing information, try again'
+    next()
+  })
+}
+
+medController.getUserInfo = (req, res, next) => {
+  if (typeof res.locals.user === 'string'){
+    next()
+  }
+
+  const valuesObj = {
+    url: `SELECT users.first_name, users.last_name, users.email, users._id FROM users
+    WHERE users.email = $1`,
+    params: [req.body.email]
+  }
+  model.query(valuesObj.url, valuesObj.params)
+  .then(data => {
+    res.locals.user = data.rows[0]
+    next()
+  })
+  .catch(err => {
+    next({
+      log: `Error occured in medController.getUserInfo`,
+      message: {err: err}
+    })
+  })
+}
+
+medController.checkMedicine = (req, res, next) => {
+  const queryText = `INSERT INTO medicine (name) VALUES ($1)
+  ON CONFLICT DO NOTHING`
+  const queryParams = [req.body.name]
+
+  models.query(queryText, queryParams)
+  .then(data => {
+    res.locals.medicineId = data.rows
+    next()
+  })
+  .catch(err => {
+    res.locals.medicineId = 'Request body medicine name error'
+    next()
+  })
+}
+
+medController.getMedicineId = (req, res, next) => {
+  if (typeof res.locals.medicineId === 'string') next()
+  const queryText = `SELECT * FROM medicine
+  WHERE medicine.name = $1`
+  const queryParams = [req.body.name]
+  
+  models.query(queryText, queryParams)
+  .then(data => {
+    res.locals.medicineId = data.rows[0]
+    next()
+  })
+  .catch(err => {
+    res.locals.medicineId = 'Request body medicine name error'
+    next()
+  })
+}
+
+medController.addSchedule = (req, res, next) => {
+
+  if (typeof res.locals.medicineId === 'string') {
+    res.locals.schedule = res.locals.medicineId
+    next()
+  }
+
+  //convert true / false values in medicineSchedule to a unique number to store in database
+  const medSch = req.body.userMedicines.medicineSchedule;
+
+  const key = {
+    breakfast: 2,
+    lunch: 3,
+    dinner: 5, 
+    beforeBed: 7
+  }
+  let schedule = 1;
+
+  for(let el in medSch){
+    if (medSch[el]) schedule *= key[el]
+  }
+
+  const queryText = `INSERT INTO users_medicine (user_id, medicine_id, schedule)
+  VALUES ($1, $2, $3)`
+  const queryParams = [res.locals.user._id, res.locals.medicineId._id, schedule]
+
+  models.query(queryText, queryParams)
+  .then(data => {
+    res.locals.schedule = data
+    next()
+  })
+  .catch(err => {
+    next({
+      log: `Error occured in medController.addSchedule`,
+      message: {err: err}
+    })
+  })
+  .catch(err => {
+    res.locals.schedule = 'Request body medicine name error'
+    next()
+  })
+}
+
+medController.getUserSchedulePost =  (req, res, next) => {
+
+  if (typeof res.locals.schedule === 'string') {
+    res.locals.userInfo = res.locals.schedule
+    nextends()
+  }
+
+  const queryText = `SELECT users.*, medicine.*, users_medicine.*, users._id AS users_id
+  FROM users
+  LEFT OUTER JOIN users_medicine ON users_medicine.user_id = users._id
+  LEFT OUTER JOIN medicine ON users_medicine.medicine_id = medicine._id
+  WHERE users.email = $1;`
+
+  const params = [req.body.email]
+  
+  model.query(queryText, params)
+  .then(data => {
+      if (data.rows.length === 0) {
+        res.locals.userInfo = 'Invalid email';
+        next();
+      } else {
+      res.locals.userInfo = data.rows;
+      next();
+    }
+  })
+  .catch(err => {
+      return next({
+        log: `An error occured in medController.getUserSchedule`,
+        message: {err: `An error occured in medController.getUserSchedule`}
+      })
+  })
 }
 
 module.exports = medController
