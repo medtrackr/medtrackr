@@ -1,84 +1,67 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import from child components...
-// import TotalsDisplay from '../components/TotalsDisplay.jsx';
-// import MarketsContainer from './MarketsContainer.jsx';
+import * as actions from '../actions/actions';
 
-// const initialState = {
-//   userId: 123,
-//   firstName: 'Trey',
-//   lastName: 'Lewis',
-//   email: 'treylewis@gmail.com',
-//   userMedicines: [{medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}}]
-// };
+const mapDispatchToProps = dispatch => ({
+// create functions that will dispatch action creators
+  register: (firstName, lastName, email, password) => {
+    dispatch(actions.registerActionCreator(firstName, lastName, email, password));
+  },
 
-// const mapStateToProps = state => ({
-//   firstName: state.meds.firstName,
-//   lastName: state.meds.lastName,
-//   email: state.meds.email,
-//   userMedicines: state.meds.userMedicines,
-// });
+});
 
-// class RegistrationContainer extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render() {
-//     return(
-//       <div className="container">
-//         <div className="outerBox">
-//           <h1 id="header">Registration Container</h1>
-//           { /* Start adding components here... */ }
-//           {/* <TotalsDisplay totalCards = {this.props.totalCards} totalMarkets = {this.props.totalMarkets} />
-//           <MarketsContainer /> */}
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-class RegistrationBox extends Component {
+class RegistrationContainer extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    }
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  submitRegister(e) {
-  
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value })
   }
+
   render() {
     return(
     <div className="inner-container">
-      <div className="header">
-        Register
+      <div className="schedule-box-header">
+        <h2>Register</h2>
       </div>
-      <div className="innerBox"> 
+      <div className="login-box">
+        <div className="login-box-inputs"> 
+          <div className="input-group">
+            <label htmlFor="firstName">First Name: </label>
+            <input type="text" name="firstName" className="login-input" placeholder="First Name" onChange={this.handleChange} />
+          </div>
+          <div className="input-group">
+            <label htmlFor="lastName">Last Name: </label>
+            <input type="text" name="lastName" className="login-input" placeholder="Last Name" onChange={this.handleChange} />
+          </div>
+          <div className="input-group">
+            <label htmlFor="email">Email: </label>
+            <input type="text" name="email" className="login-input" placeholder="Email" onChange={this.handleChange} />
+          </div>
 
-        <div className="input-group">
-          <label htmlFor="firstName">First Name</label>
-          <input type="text" name="firstName" className="login-input" placeholder="First Name"/>
+          <div className="input-group">
+            <label htmlFor="password">Password: </label>
+            <input type="password" name="password" className ="login-input" placeholder="Password" onChange={this.handleChange} />
+          </div>
+          <div className='add-medicine-button'>
+            <button type="button" className="login-button" onClick={ () => {this.props.register(this.state.firstName, this.state.lastName, this.state.email, this.state.password)} }>Register</button>
+          </div>
         </div>
-        <div className="input-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input type="text" name="lastName" className="login-input" placeholder="Last Name"/>
-        </div>
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" className="login-input" placeholder="Email"/>
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" className ="login-input" placeholder="Password"/>
-        </div>
-
-        <button type="button" className="login-button" onClick={this.submitRegister.bind(this)}>Register</button>
-
-
       </div>
     </div>
     )
   }
 }
 
-export default connect(mapStateToProps, null)(RegistrationContainer, RegistrationBox);
+export default connect(null, mapDispatchToProps)(RegistrationContainer);

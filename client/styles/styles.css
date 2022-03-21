@@ -123,7 +123,7 @@ body {
     justify-content: center;
 }
 
-.schedule-box h2 {
+.schedule-box-header h2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,9 +178,6 @@ body {
 }
 
 
-.add-medicine-form {
-
-}
 
 .add-medicine-form-data {
     display: flex;
@@ -216,6 +213,12 @@ body {
     border: 2px solid #5CA2A8;
 }
 
+.add-medicine-button a:active {
+    cursor: pointer;
+    background-color:#E0F0F1;
+    color:#FFFFFF;
+}
+
 .remove-medicine-button button {
     padding: 5px;
 }
@@ -224,6 +227,24 @@ body {
     display: flex;
     justify-content: left;
     align-items: center;
+}
+
+.login-box {
+    display: flex;
+    justify-content: center;
+}
+
+.login-box-inputs {
+    margin: 10px;
+    background-color: #E0F0F1;
+    border-radius: 1em;
+    padding: 20px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
 }
 
 .svg {
