@@ -16,10 +16,36 @@ export const setNewMedicineActionCreator = newMedicine => ({
   payload: newMedicine,
 });
 
+// userMedicines: [
+//   {medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}},
+//   {medicineId: 2, medicineName: 'Deoxys', medicineSchedule: {breakfast: true, lunch: true, dinner: true, beforeBed: false}}],
+// addMedicineStatus: false,
+// newMedicine: '',
+// breakfast: false,
+// lunch: false,
+// dinner: false,
+// beforeBed: false,
+
 // Add new medicine to state when button is pressed
-export const addNewMedicineActionCreator = () => ({
-  type: types.ADD_NEW_MEDICINE,
-});
+export const addNewMedicineActionCreator = (email, medicineName, breakfast, lunch, dinner, beforeBed) => (dispatch) => {
+  const body = {
+    name: medicineName,
+    userMedicines: {
+      medicineSchedule: {breakfast, lunch, dinner, beforeBed}
+    },
+    email: email
+  }
+  console.log("actions.js body: ",body)
+  axios.post('db/addMedicine', body)
+    .then(({data}) => {
+      console.log("actions.js: ",data)
+      dispatch({
+        type: types.ADD_NEW_MEDICINE,
+        payload: data
+      })
+    })
+    .catch(err => console.log(err))
+};
 
 export const removeMedicineActionCreator = id => ({
   type: types.REMOVE_MEDICINE,
@@ -31,29 +57,16 @@ export const updateScheduleCheckboxActionCreator = checkbox => ({
   payload: checkbox,
 });
 
-
 export const loginActionCreator = (email, password) => (dispatch) => {
-  // console.log(email, password)
-  // const response = await fetch(`/db/login/${email}/${password}`)
-  // const data = await response.json()
-  // console.log(data)
-
-  // return {
-  //   type: types.LOGIN,
-  //   payload: data
-  // }
-
-  
   axios.get(`/db/login/${email}/${password}`)
-  .then(({data}) => {
-    // console.log(data)
-    dispatch({
-      type: types.LOGIN,
-      payload: data
+    .then(({data}) => {
+      // console.log(data)
+      dispatch({
+        type: types.LOGIN,
+        payload: data
+      })
     })
-  })
-  .catch(err => console.log(err))
-
+    .catch(err => console.log(err))
 };
 
 export const registerActionCreator = (firstName, lastName, email, password) => {

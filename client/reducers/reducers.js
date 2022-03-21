@@ -63,6 +63,8 @@ const medsReducer = (state = initialState, action) => {
       };
 
     case types.ADD_NEW_MEDICINE:
+      
+      console.log(action.payload)
       const medicineId = ++state.lastMedicineId;
       const newMedicine = {
         medicineId,

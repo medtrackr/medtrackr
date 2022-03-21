@@ -146,6 +146,7 @@ medController.getUserInfo = (req, res, next) => {
 }
 
 medController.checkMedicine = (req, res, next) => {
+  console.log('inside check medicine')
   const queryText = `INSERT INTO medicine (name) VALUES ($1)
   ON CONFLICT DO NOTHING`
   const queryParams = [req.body.name]
@@ -162,6 +163,7 @@ medController.checkMedicine = (req, res, next) => {
 }
 
 medController.getMedicineId = (req, res, next) => {
+  console.log('inside get medicineID')
   if (typeof res.locals.medicineId === 'string') next()
   const queryText = `SELECT * FROM medicine
   WHERE medicine.name = $1`
@@ -179,14 +181,16 @@ medController.getMedicineId = (req, res, next) => {
 }
 
 medController.addSchedule = (req, res, next) => {
-
+  console.log('inside addschedule', req.body)
   if (typeof res.locals.medicineId === 'string') {
     res.locals.schedule = res.locals.medicineId
     next()
   }
-
+  
   //convert true / false values in medicineSchedule to a unique number to store in database
   const medSch = req.body.userMedicines.medicineSchedule;
+  console.log(res.locals.user)
+  console.log(res.locals.medicineId)
 
   const key = {
     breakfast: 2,
@@ -202,7 +206,10 @@ medController.addSchedule = (req, res, next) => {
 
   const queryText = `INSERT INTO users_medicine (user_id, medicine_id, schedule)
   VALUES ($1, $2, $3)`
+
   const queryParams = [res.locals.user._id, res.locals.medicineId._id, schedule]
+
+  console.log(queryParams)
 
   models.query(queryText, queryParams)
   .then(data => {
@@ -222,10 +229,10 @@ medController.addSchedule = (req, res, next) => {
 }
 
 medController.getUserSchedulePost =  (req, res, next) => {
-
+  console.log('inside getuserschedulepost')
   if (typeof res.locals.schedule === 'string') {
     res.locals.userInfo = res.locals.schedule
-    nextends()
+    next()
   }
 
   const queryText = `SELECT users.*, medicine.*, users_medicine.*, users._id AS users_id

@@ -23,7 +23,7 @@ class App extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.loginSuccess)
+    // console.log(this.props.loginSuccess)
     if (!this.props.loginSuccess){
       return(
         <BrowserRouter>
