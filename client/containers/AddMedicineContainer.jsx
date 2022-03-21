@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 import AddMedicineForm from '../components/AddMedicineForm.jsx';
+import RemoveMedicineForm from '../components/RemoveMedicineForm.jsx';
 // import Schedule from '../components/Schedule.jsx';
 // import Navbar from '../components/Navbar.jsx';
 // import from child components...
@@ -37,6 +38,9 @@ const mapDispatchToProps = dispatch => ({
   addNewMedicine: () => {
     dispatch(actions.addNewMedicineActionCreator());
   },
+  removeMedicine: (id) => {
+    dispatch(actions.removeMedicineActionCreator(id));
+  },
   updateScheduleCheckbox: (checkbox) => {
     dispatch(actions.updateScheduleCheckboxActionCreator(checkbox));
   },
@@ -50,18 +54,43 @@ class AddMedicineContainer extends Component {
   render() {
     return(
       <div className="schedule-box">
-        <h2 id="add-medicine">Add Medicine</h2>
-        <div className="add-medicine-box">
-          <AddMedicineForm 
-            setNewMedicine = {this.props.setNewMedicine} 
-            newMedicine = {this.props.newMedicine} 
-            addNewMedicine = {this.props.addNewMedicine}
-            breakfast = {this.props.breakfast}
-            lunch = {this.props.lunch}
-            dinner = {this.props.dinner}
-            beforeBed = {this.props.beforeBed}
-            updateScheduleCheckbox = {this.props.updateScheduleCheckbox}
-          />
+        <div className="medicine-box"> 
+          <div>
+            <div className="schedule-box-header">
+              <h2>Add Medicine</h2>
+            </div>
+            <div className="add-medicine-box">
+              <AddMedicineForm 
+                setNewMedicine = {this.props.setNewMedicine} 
+                newMedicine = {this.props.newMedicine} 
+                addNewMedicine = {this.props.addNewMedicine}
+                breakfast = {this.props.breakfast}
+                lunch = {this.props.lunch}
+                dinner = {this.props.dinner}
+                beforeBed = {this.props.beforeBed}
+                updateScheduleCheckbox = {this.props.updateScheduleCheckbox}
+              />
+            </div>
+          </div>
+          <div>
+            <div className="schedule-box-header">
+              <h2>Remove Medicine</h2>
+            </div>
+            <div className="add-medicine-box">
+              <RemoveMedicineForm 
+                userMedicines = {this.props.userMedicines}
+                setNewMedicine = {this.props.setNewMedicine} 
+                newMedicine = {this.props.newMedicine} 
+                addNewMedicine = {this.props.addNewMedicine}
+                removeMedicine = {this.props.removeMedicine}
+                breakfast = {this.props.breakfast}
+                lunch = {this.props.lunch}
+                dinner = {this.props.dinner}
+                beforeBed = {this.props.beforeBed}
+                updateScheduleCheckbox = {this.props.updateScheduleCheckbox}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

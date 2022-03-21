@@ -66,6 +66,18 @@ const medsReducer = (state = initialState, action) => {
         newMedicine: '',
       };
 
+    case types.REMOVE_MEDICINE:
+      console.log(action.payload)
+      const id = action.payload;
+      const newMedicineList = [];
+      for (let i = 0; i < state.userMedicines.length; i++) {
+        if (state.userMedicines[i].medicineId !== id) newMedicineList.push(state.userMedicines[i]);
+      }
+      return {
+        ...state,
+        userMedicines: newMedicineList,
+      };
+
     default: {
       return state;
     }

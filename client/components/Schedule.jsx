@@ -28,7 +28,9 @@ const Schedule = ({
   }
   return (
     <div className="schedule-box">
-      <h2>This Week</h2>
+      <div className="schedule-box-header">
+        <h2>This Week</h2>
+      </div>
       <div className="week-box">
         {days}
       </div>

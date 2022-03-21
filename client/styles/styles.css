@@ -9,6 +9,8 @@ body {
 }
 
 #header {
+    display: flex;
+    align-items: center;
     color:#005C70;
     margin-left: 1%;
 }
@@ -18,17 +20,17 @@ body {
 }
 
 .add-medicine-box {
+    display: flex;
+    justify-content: center;
     margin: 10px;
-}
-
-.add-medicine-form {
-    background-color: #5CA2A8;
+    background-color: #E0F0F1;
     border-radius: 1em;
+    padding: 5px;
 }
 
 .headerBox {
     display: flex;
-    margin: 5px;
+    margin: 10px;
     border-radius: 1em;
     background-color: #E0F0F1;
     padding: 5px;
@@ -86,6 +88,9 @@ body {
 .menu-icons {
     display: flex;
     align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    margin-right: 3px;
 }
 
 .menu-text {
@@ -100,10 +105,18 @@ body {
 
 .schedule-box {
     border-radius: 1em;
-    background-color: #E0F0F1;
-    margin: 5px;
     margin-top: 10px;
-    padding: 1px;
+}
+
+.medicine-box {
+    display: flex;
+    justify-content: center;
+}
+
+.schedule-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .schedule-box h2 {
@@ -111,24 +124,28 @@ body {
     align-items: center;
     justify-content: center;
     color: #005C70;
-    padding-top: 10px;
+    min-width: 300px;
+    border-bottom: 2px solid #005C70;
     margin: 0px;
 }
 
 .week-box {
     border-radius: 1em;
-    background-color: #5CA2A8;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+    display: grid;
+    justify-content: center;
+    grid-template-columns:  repeat(auto-fit, minmax(9rem, calc(100%/7)));
+    grid-auto-flow: row;
     margin: 10px;
 }
 
 .day-box {
     border-radius: 0.5em;
     color: #FFFFFF;
-    background-color: #5CA2A8;
+    background-color: #E0F0F1;
     /* box-shadow: 2px 2px 2px rgb(194, 194, 194); */
     margin: 5px;
     flex: 1;
@@ -136,14 +153,14 @@ body {
 
 .day-box h3 {
     text-align: center;
-    color: #FFFFFF;
+    color: #005C70;
     font-size: 1.3em;
 }
 
 .time-of-day-box {
     border-radius: 0.5em;
-    background-color: #5CA2A8;
-    color: #FFFFFF;
+    background-color: #E0F0F1;
+    color: #005C70;
     /* box-shadow: 1px 1px 1px rgb(194, 194, 194); */
     margin: 5px;
     padding: 5px;
@@ -156,11 +173,16 @@ body {
     border-bottom: 2px solid;
 }
 
+
+.add-medicine-form {
+
+}
+
 .add-medicine-form-data {
     display: flex;
     flex: row;
     justify-content: center;
-    color: #FFFFFF;
+    color: #005C70;
 }
 
 .add-medicine-form-data div {
@@ -180,18 +202,24 @@ body {
     border-radius: 0.8em;
     background-color:#E0F0F1;
     color:#005C70;
-    border: 0px;
+    border: 2px solid #005C70;
 }
 
 .add-medicine-button button:hover {
     cursor: pointer;
-
+    background-color:#5CA2A8;
+    color:#FFFFFF;
+    border: 2px solid #5CA2A8;
 }
 
-#add-medicine {
+.remove-medicine-button button {
+    padding: 5px;
+}
+
+.medicine-list-item {
     display: flex;
-    flex: row;
-    justify-content: center;
+    justify-content: left;
+    align-items: center;
 }
 
 .svg {

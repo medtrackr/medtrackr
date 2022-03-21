@@ -20,6 +20,11 @@ export const addNewMedicineActionCreator = () => ({
   type: types.ADD_NEW_MEDICINE,
 });
 
+export const removeMedicineActionCreator = id => ({
+  type: types.REMOVE_MEDICINE,
+  payload: id,
+});
+
 export const updateScheduleCheckboxActionCreator = checkbox => ({
   type: types.UPDATE_SCHEDULE_CHECKBOX ,
   payload: checkbox,

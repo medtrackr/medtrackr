@@ -30,10 +30,10 @@ const Navbar = ({
       <div className="navbar-single-button">
         <a onClick={() => { addMedicine() }}>
           <div className="menu-icons">
-          <svg viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg"  width="24px" height="24px"><path d="m465.6,294.9l-108.7-108.8-170.8,170.8 108.8,108.8c22.8,22.8 93.7,68 170.8,0 49.8-44.1 47-123.7-0.1-170.8z"/><path d="M217.7,46.7c-22.8-22.8-93.7-68-170.8,0C-3,90.7-0.2,170.3,46.9,217.4l108.8,108.8l170.8-170.8L217.7,46.7z"/></svg>
+          <svg viewBox="0 0 512 512"  xmlns="http://www.w3.org/2000/svg"  width="24px" height="24px"><g transform="matrix(0, 1, -1, 0, 512.456566, -0.056541)"><path d="m465.6,294.9l-108.7-108.8-170.8,170.8 108.8,108.8c22.8,22.8 93.7,68 170.8,0 49.8-44.1 47-123.7-0.1-170.8z"/><path d="M217.7,46.7c-22.8-22.8-93.7-68-170.8,0C-3,90.7-0.2,170.3,46.9,217.4l108.8,108.8l170.8-170.8L217.7,46.7z"/></g></svg>
           </div>
           <div className="menu-text">
-            <h3>Add Medications</h3>
+            <h3>Add/Remove Medicine</h3>
           </div>
         </a>
       </div>
