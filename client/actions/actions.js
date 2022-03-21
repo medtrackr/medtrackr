@@ -30,3 +30,13 @@ export const updateScheduleCheckboxActionCreator = checkbox => ({
   payload: checkbox,
 });
 
+
+export const loginActionCreator = (email, password) => {
+  console.log(email, password)
+  return {type: types.LOGIN}
+};
+
+export const registerActionCreator = (firstName, lastName, email, password) => {
+  console.log(firstName, lastName, email, password)
+  return {type: types.REGISTER}
+};
