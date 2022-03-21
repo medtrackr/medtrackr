@@ -109,8 +109,12 @@ body {
 }
 
 .medicine-box {
-    display: flex;
+    /* display: flex;
+    justify-content: center; */
+    display: grid;
     justify-content: center;
+    grid-template-columns:  repeat(auto-fit, 24rem);
+    grid-auto-flow: row;
 }
 
 .schedule-box-header {
