@@ -15,24 +15,29 @@ const AddMedicineForm = ({
   dinner, //state of checkbox
   beforeBed, //state of checkbox
   updateScheduleCheckbox, // function to update state of checkbox 
-}) => (
-  <div className="add-medicine-form">
-    <div className="add-medicine-form-data">
-      <div>
-        <div>Name of Medicine:</div><input onChange={e => { setNewMedicine(e.target.value)}} value={newMedicine} type="text" />
+  email, //email of user
+}) => {
+console.log("inside AddMedicineForm: ", email, breakfast, lunch, dinner, beforeBed)
+  return (
+    <div className="add-medicine-form">
+      <div className="add-medicine-form-data">
+        <div>
+          <div>Name of Medicine:</div><input onChange={e => { setNewMedicine(e.target.value)}} value={newMedicine} type="text" />
+        </div>
+        <div>
+          <div>Schedule:</div>
+          <div><input type="checkbox" name="breakfast" id="breakfast" checked={breakfast} onChange={() => {handleOnChange('breakfast', breakfast, updateScheduleCheckbox)}} /><label>Breakfast</label></div>
+          <div><input type="checkbox" name="lunch" id="lunch" checked={lunch} onChange={() => {handleOnChange('lunch', lunch, updateScheduleCheckbox)}} /><label>Lunch</label></div>
+          <div><input type="checkbox" name="dinner" id="dinner" checked={dinner} onChange={() => {handleOnChange('dinner', dinner, updateScheduleCheckbox)}} /><label>Dinner</label></div>
+          <div><input type="checkbox" name="beforeBed" id="beforeBed" checked={beforeBed} onChange={() => {handleOnChange('beforeBed', beforeBed, updateScheduleCheckbox)}} /><label>Before Bed</label></div>
+        </div>
       </div>
-      <div>
-        <div>Schedule:</div>
-        <div><input type="checkbox" name="breakfast" id="breakfast" checked={breakfast} onChange={() => {handleOnChange('breakfast', breakfast, updateScheduleCheckbox)}} /><label>Breakfast</label></div>
-        <div><input type="checkbox" name="lunch" id="lunch" checked={lunch} onChange={() => {handleOnChange('lunch', lunch, updateScheduleCheckbox)}} /><label>Lunch</label></div>
-        <div><input type="checkbox" name="dinner" id="dinner" checked={dinner} onChange={() => {handleOnChange('dinner', dinner, updateScheduleCheckbox)}} /><label>Dinner</label></div>
-        <div><input type="checkbox" name="beforeBed" id="beforeBed" checked={beforeBed} onChange={() => {handleOnChange('beforeBed', beforeBed, updateScheduleCheckbox)}} /><label>Before Bed</label></div>
+      <div className="add-medicine-button">
+        <button onClick={() => { addNewMedicine(email, newMedicine, breakfast, lunch, dinner, beforeBed) }}>Add Medicine</button>
       </div>
     </div>
-    <div className="add-medicine-button">
-      <button onClick={() => { addNewMedicine() }}>Add Medicine</button>
-    </div>
-  </div>
-);
+  );
+}
+
 
 export default AddMedicineForm;

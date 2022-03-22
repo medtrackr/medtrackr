@@ -35,8 +35,8 @@ const mapDispatchToProps = dispatch => ({
   setNewMedicine: (newValue) => {
     dispatch(actions.setNewMedicineActionCreator(newValue));
   },
-  addNewMedicine: () => {
-    dispatch(actions.addNewMedicineActionCreator());
+  addNewMedicine: (email, medicineName, breakfast, lunch, dinner, beforeBed) => {
+    dispatch(actions.addNewMedicineActionCreator(email, medicineName, breakfast, lunch, dinner, beforeBed));
   },
   removeMedicine: (id) => {
     dispatch(actions.removeMedicineActionCreator(id));
@@ -69,6 +69,7 @@ class AddMedicineContainer extends Component {
                 dinner = {this.props.dinner}
                 beforeBed = {this.props.beforeBed}
                 updateScheduleCheckbox = {this.props.updateScheduleCheckbox}
+                email = {this.props.email}
               />
             </div>
           </div>

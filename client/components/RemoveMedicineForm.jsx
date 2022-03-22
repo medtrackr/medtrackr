@@ -10,8 +10,8 @@ const handleOnChange = (name, time, func) => {
 
 const generateMedicineList = (medicineList, removeMedicine) => {
   const output = [];
+  if (!medicineList) return output;
   for (let i = 0; i < medicineList.length; i++){
-    console.log(medicineList[i].medicineId)
     output.push (<Medicine medicineName={medicineList[i].medicineName} medicineId={medicineList[i].medicineId} removeMedicine={removeMedicine}/>)
   }
   return output;
