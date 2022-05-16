@@ -1,0 +1,53 @@
+{
+  meds: {
+    breakfast: ['albuterol', 'symvastatin'],
+    lunch: [],
+    dinner: ['ibuprofen'],
+    evening: [],
+  },
+  ptname:
+  ptemail:
+}
+
+const initialState = {
+  userId: 123,
+  firstName: 'Trey',
+  lastName: 'Lewis',
+  email: 'treylewis@gmail.com',
+  userMedicines: [{medicineId: 1, medicineName: 'Sentret', medicineSchedule: {breakfast: true, lunch: false, dinner: false, beforeBed: true}}]
+};
+
+
+0: breakfast
+1: lunch
+2: dinner
+3: evening
+
+4: four times a day
+5: before meals
+6: at bedtime
+7: twice a day
+8: everyday
+
+
+
+
+{
+  CREATE USER - {
+
+  }
+  ADD MED - {
+
+  }
+  GET CALENDAR - {
+
+  }
+  
+}
+
+breakfast = 2
+lunch = 3
+dinner = 5
+beforebed = 7
+
+42

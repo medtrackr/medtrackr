@@ -5,17 +5,18 @@ module.exports = {
   mode: 'development',
   entry: path.join(__dirname, "index.js"),
   output: {
-    path:path.resolve(__dirname, "dist"),
+    path:path.resolve(__dirname, "/dist"),
   },
   module: {
     rules: [
       {
-        test: /\.?js$/,
+        test: /\.js|\.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
           }
         }
       },
